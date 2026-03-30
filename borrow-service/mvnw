@@ -1,0 +1,46 @@
+#!/bin/sh
+# Apache Maven Wrapper startup script
+
+# Resolve the location of the script
+PRG="$0"
+while [ -h "$PRG" ]; do
+  ls=`ls -ld "$PRG"`
+  link=`expr "$ls" : '.*-> \(.*\)$'`
+  if expr "$link" : '/.*' > /dev/null; then
+    PRG="$link"
+  else
+    PRG=`dirname "$PRG"`"/$link"
+  fi
+done
+SAVED_PWD=`pwd`
+BASEDIR=`dirname "$PRG"`/..
+BASEDIR=`cd "$BASEDIR" && pwd`
+
+MAVEN_PROJECTBASEDIR="$BASEDIR"
+export MAVEN_PROJECTBASEDIR
+
+if [ -z "$MAVEN_WRAPPER_JAR" ]; then
+  MAVEN_WRAPPER_JAR="$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.jar"
+fi
+
+if [ ! -f "$MAVEN_WRAPPER_JAR" ]; then
+  if [ -z "$MAVEN_WRAPPER_URL" ]; then
+    MAVEN_WRAPPER_URL=`grep -e '^wrapperUrl=' "$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.properties" | cut -d'=' -f2`
+  fi
+  if [ -z "$MAVEN_WRAPPER_URL" ]; then
+    echo "Maven Wrapper URL not specified."
+    exit 1
+  fi
+  mkdir -p "$MAVEN_PROJECTBASEDIR/.mvn/wrapper"
+  echo "Downloading Maven Wrapper from $MAVEN_WRAPPER_URL"
+  if command -v curl > /dev/null 2>&1; then
+    curl -s -L "$MAVEN_WRAPPER_URL" -o "$MAVEN_WRAPPER_JAR"
+  elif command -v wget > /dev/null 2>&1; then
+    wget -q -O "$MAVEN_WRAPPER_JAR" "$MAVEN_WRAPPER_URL"
+  else
+    echo "Neither curl nor wget is available to download Maven Wrapper."
+    exit 1
+  fi
+fi
+
+exec "$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.jar" "$@"
