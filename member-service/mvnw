@@ -1,0 +1,22 @@
+#!/bin/sh
+# MavenWrapper Script for Unix-like systems
+# This script can be used to bootstrap Maven without having it pre-installed
+
+set -e
+
+PRG="$0"
+while [ -h "$PRG" ]; do
+    ls=$(ls -ld "$PRG")
+    link=$(expr "$ls" : '.*-> \(.*\)$')
+    if expr "$link" : '/.*' > /dev/null; then
+        PRG="$link"
+    else
+        PRG=$(dirname "$PRG")"/$link"
+    fi
+done
+
+PRGDIR=$(dirname "$PRG")
+MAVEN_HOME="$PRGDIR/.."
+MAVEN_CMD="$MAVEN_HOME/bin/mvn"
+
+exec "$MAVEN_CMD" "$@"

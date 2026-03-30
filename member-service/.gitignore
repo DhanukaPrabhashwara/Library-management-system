@@ -1,0 +1,56 @@
+# Git Ignore file for Member Service
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# Gradle
+.gradle/
+build/
+gradle/
+*.gradle
+
+# Spring Boot
+spring-boot-devtools.properties
+application-local.properties
+application-dev.properties
+
+# Compiled class files
+*.class
+
+# Log files
+*.log
+logs/
+
+# Database
+*.db
+*.h2.db
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Misc
+.classpath
+.project
+.settings/
+*.jar
+!.mvn/wrapper/maven-wrapper.jar
